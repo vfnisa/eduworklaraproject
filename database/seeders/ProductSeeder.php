@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Delicious fried rice with vegetables and chicken.',
                 'price' => 20000,
                 'stock' => 50,
-                'image' => 'https://cdn-2.tstatic.net/jateng/foto/bank/images/nasi-goreng.jpg',
+                'image' => 'https://dcostseafood.id/wp-content/uploads/2021/12/Nasi-Goreng-Tom-Yum.jpg',
                 'product_category_id' => 3,
             ],
         ]);

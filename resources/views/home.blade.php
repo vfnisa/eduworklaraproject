@@ -1,7 +1,14 @@
 @extends('layout')
 @section('title', 'Toko Online')
 @section('content')
-
+<style>
+  .thumbnail_product{
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+  }
+</style>
   <!-- Hero Section -->
   <div class="bg-primary text-white text-center py-5">
     <div class="container">
@@ -15,42 +22,23 @@
     <h2 class="text-center mb-4">Produk Unggulan</h2>
     <div class="row g-4">
       <!-- Produk Card 1 -->
-      <div class="col-md-4">
+      @foreach ( $products as $product)
+      <div class="col-md-4 col-sm-6">
         <div class="card h-100">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Produk 1">
+          <div class="thumbnail_product" style="background-image: url('{{ $product->image }}');"></div>
           <div class="card-body">
-            <h5 class="card-title">Nama Produk 1</h5>
-            <p class="card-text">Deskripsi singkat produk 1.</p>
-            <p class="text-primary fw-bold">Rp 100.000</p>
+            <h5 class="card-title">{{ $product->name }}</h5>
+            <p class="card-text">{{ $product->description }}</p>
+            <p class="text-primary fw-bold">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
             <a href="#" class="btn btn-primary w-100">Beli Sekarang</a>
           </div>
         </div>
       </div>
-
-      <!-- Produk Card 2 -->
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Produk 2">
-          <div class="card-body">
-            <h5 class="card-title">Nama Produk 2</h5>
-            <p class="card-text">Deskripsi singkat produk 2.</p>
-            <p class="text-primary fw-bold">Rp 150.000</p>
-            <a href="#" class="btn btn-primary w-100">Beli Sekarang</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produk Card 3 -->
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Produk 3">
-          <div class="card-body">
-            <h5 class="card-title">Nama Produk 3</h5>
-            <p class="card-text">Deskripsi singkat produk 3.</p>
-            <p class="text-primary fw-bold">Rp 200.000</p>
-            <a href="#" class="btn btn-primary w-100">Beli Sekarang</a>
-          </div>
-        </div>
+      @endforeach
+    </div>
+    <div class="row mt-4">
+      <div class="col-12">
+        {{$products->links()}}
       </div>
     </div>
   </div>
